@@ -5,6 +5,11 @@ module.exports = {
     sameVc: false,
     player: false,
     run: async (client, interaction) => {
-        await interaction.reply(`${client.ws.ping}ms`)
+        try {
+            await interaction.deferReply()
+            await interaction.repliy(`${client.ws.ping}ms`)
+        } catch (err) {
+            await client.errorLogger(client, err, interaction)
+        }
     }
 }

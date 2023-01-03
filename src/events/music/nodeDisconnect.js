@@ -1,3 +1,7 @@
 module.exports = async (client, node) => {
-    console.log(`Node ${node.name} desconectado`)
+    try {
+        console.log(`Node ${node.name} desconectado`)
+    } catch (err) {
+        await client.errorLogger(client, err, null)
+    }
 }

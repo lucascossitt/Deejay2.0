@@ -1,6 +1,10 @@
 module.exports = async (client, player) => {
-    const channel = client.channels.cache.get(player.textChannel)
-    await channel?.send('A fila terminou')
+    try {
+        const channel = client.channels.cache.get(player.textChannel)
+        await channel?.send('A fila terminou')
 
-    return player.destroy()
+        return player.destroy()
+    } catch (err) {
+        await client.errorLogger(client, err, null)
+    }
 }
