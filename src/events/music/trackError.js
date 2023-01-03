@@ -7,6 +7,7 @@ module.exports = async (client, player, track, error) => {
             .setDescription(`[${track.info.title}](${track.info.uri})`)
             .setColor('Purple')
 
+        await client.errorLogger(client, error, null)
         const channel = client.channels.cache.get(player.textChannel)
         return await channel?.send({embeds: [embed]})
     } catch (err) {

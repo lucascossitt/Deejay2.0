@@ -7,7 +7,7 @@ module.exports = {
     run: async (client, interaction) => {
         try {
             await interaction.deferReply()
-            await interaction.repliy(`${client.ws.ping}ms`)
+            await interaction.reply(`${Math.floor(client.ws.ping)}ms`)
         } catch (err) {
             await client.errorLogger(client, err, interaction)
         }
