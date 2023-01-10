@@ -56,8 +56,6 @@ module.exports = async (client, interaction) => {
                     if (parsed) results.push(parsed);
                 }
 
-                console.log(results)
-
                 await interaction.respond(results.map(video => ({
                     name: video.title,
                     value: video.url
